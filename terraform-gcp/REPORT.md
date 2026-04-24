@@ -43,21 +43,6 @@ Mặc dù không có quota GPU để test thực tế, dựa trên ước tính 
 | **GPU** | Không | 1x NVIDIA T4 |
 | **Chi phí/giờ** | ~$0.134 | ~$0.54 (~$0.35 GPU + $0.19 VM) |
 | **Training Time (ước tính)** | 2.08 giây | < 1 giây (GPU accelerated) |
-| **Dùng ngay?** | ✅ Có (không cần quota) | ❌ Chờ quota 24h+ |
+| **Dùng ngay?** |  Có (không cần quota) |  Chờ quota 24h+ |
 
 **Kết luận:** Phương án CPU không chỉ khả thi ngay mà còn rẻ hơn ~74% so với GPU. Cho workload như LightGBM (không yêu cầu matrix operations phức tạp như DNN), hiệu suất CPU đã đủ.
-
----
-
-## 5. Chi Phí Ước Tính
-
-**Khoảng thời gian chạy:** terraform apply (13:45) → benchmark xong (14:00) → capture billing (15:30) = ~1.75 giờ
-
-| Dịch Vụ | Loại Tài Nguyên | Chi Phí/giờ | Thực Tế (~1.75h) |
-|---|---|---|---|
-| Compute Engine | e2-standard-4 VM | $0.134 | ~$0.234 |
-| Cloud NAT | (egress traffic ~500MB) | $0.044 + $0.05 | ~$0.130 |
-| Cloud Load Balancing | External HTTP LB | $0.008 | ~$0.014 |
-| **TỔNG** | | | **~$0.38** |
-
-**Ghi chú:** Giá rẻ hơn rất nhiều so với GPU T4 phương án ban đầu (~$0.54/giờ).
